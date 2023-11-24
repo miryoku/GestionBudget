@@ -14,9 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use \App\Http\Controllers\BudgetController;
+use Illuminate\Support\Facades\Auth;
+
+
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+        return redirect('/budget/all');
+    }else{
+        return view('welcome');
+    }
 });
+
+
+
+
+Route::prefix("/budget")->name("budget")->group(function(){
+    Route::get("/all",[BudgetController::class,'all'])->name('all');
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
