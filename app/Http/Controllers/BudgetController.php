@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Database\migrations\Models\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class BudgetController extends Controller
