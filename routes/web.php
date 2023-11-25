@@ -26,13 +26,11 @@ Route::get('/', function () {
     }
 });
 
-
-
-
-Route::prefix("/budget")->name("budget")->group(function(){
-    Route::get("/all",[BudgetController::class,'all'])->name('all');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix("/budget")->name("budget")->group(function(){
+        Route::get("/all",[BudgetController::class,'all'])->name('all');
+    });
 });
-
 
 
 Route::get('/dashboard', function () {

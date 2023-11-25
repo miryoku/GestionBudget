@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use Database\migrations\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class BudgetController extends Controller
 {
     public function all(){
-        if(Auth::check()){
             $user=Auth::user();
 
-            return $user;
-        }else{
-            return "non";
-        }
+
+
+            $test= User::with("budgets")->get();
+
+
+dd($test);
+
+            return view("Budget.list");
+
 
 
 
