@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_budgets',function(Blueprint $table){
+        Schema::create('budgets_user',function(Blueprint $table){
             $table->foreignIdFor(\App\Models\Budgets::Class)->constrained()->cascadeOndelete();
             $table->foreignIdFor(\App\Models\User::Class)->constrained()->cascadeOndelete();
             $table->primary(['budgets_id','user_id']);//ceci permet de dire que la cle primaire sera les 2 cle etranger
@@ -23,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_budgets');
+        Schema::dropIfExists('budgets_user');
 
     }
 };

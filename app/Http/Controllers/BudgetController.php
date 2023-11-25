@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Auth;
 class BudgetController extends Controller
 {
     public function all(){
-            $user=Auth::user();
+            $user=Auth::user()::with("budgets")->get();
 
 
 
             $test= User::with("budgets")->get();
 
 
-dd($test);
+dd($user->toArray());
 
             return view("Budget.list");
 
